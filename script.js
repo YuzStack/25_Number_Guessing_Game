@@ -8,7 +8,7 @@ console.log(secretNumber);
 const checkBtn = document.querySelector(".check");
 const message = document.querySelector(".message");
 
-checkBtn.addEventListener("click", () => {
+const playGame = () => {
   const guessedNumber = Number(document.querySelector(".guess").value);
 
   // When there's no input
@@ -46,8 +46,16 @@ checkBtn.addEventListener("click", () => {
       message.textContent = "💥 You lost the Game!";
       document.querySelector(".score").textContent = 0;
     }
-  } 
-});
+  }
+};
+
+checkBtn.addEventListener('click', playGame)
+// Adding Enter key functionality
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter') {
+    playGame()
+  }
+})
 
 // Reset Functionality
 const resetBtn = document.querySelector(".again");
